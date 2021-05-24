@@ -1,4 +1,4 @@
-# include "get_next_line.h"
+#include "get_next_line.h"
 
 int	reads(int fd, char **line, char *buff)
 {
@@ -9,12 +9,12 @@ int	reads(int fd, char **line, char *buff)
 	buff2 = buff;
 	while (21)
 	{
-        if (!*buff)
-		    reads = read(fd, buff, BUFFER_SIZE);
-		while((*buff && *buff != '\n'))
+		if (!*buff)
+			reads = read(fd, buff, BUFFER_SIZE);
+		while (*buff && *buff != '\n')
 			buff++;
-        len = buff - buff2;
-		if ((*buff == '\n') || reads == 0)
+		len = buff - buff2;
+		if (*buff == '\n' || reads == 0)
 		{
 			*line = malloc(len + 1);
 			if (!(*line))
@@ -31,10 +31,10 @@ int	reads(int fd, char **line, char *buff)
 
 int	get_next_line(int fd, char **line)
 {
-	static char buff[BUFFER_SIZE][BUFFER_SIZE];
+	static char	buff[BUFFER_SIZE][BUFFER_SIZE];
 
-	if (!line || read(fd, 0, 0) == -1 || BUFFER_SIZE <= 0)
+	if (!line || read(fd, 0, 0) == -1 || BUFFER_SIZE <= 0 || fd < 0)
 		return (-1);
 	*line = 0;
-	return(reads(fd, line, *buff));
+	return (reads(fd, line, *buff));
 }
