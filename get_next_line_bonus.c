@@ -19,8 +19,8 @@ int	reads(int fd, char **line, char *buff)
 			*line = malloc(len + 1);
 			if (!(*line))
 				return (-1);
-			mem_cpy(buff2, *line, len, 1, 0);
-			mem_cpy(++buff, buff2, BUFFER_SIZE, 1, 1);
+			mem_cpy(buff2, *line, len, 0);
+			mem_cpy(++buff, buff2, BUFFER_SIZE, 1);
 			if (reads != 0)
 				return (1);
 			else

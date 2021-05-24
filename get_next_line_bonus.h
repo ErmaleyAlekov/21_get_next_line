@@ -5,6 +5,6 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
-void	mem_cpy(char *src, char *src2, int a, int clean);
+void	mem_cpy(char *src, char *src2, int a, int stop);
 int		get_next_line(int fd, char **line);
 #endif
